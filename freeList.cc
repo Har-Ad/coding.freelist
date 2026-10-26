@@ -40,7 +40,7 @@ freeList::coalesce_forward() {
   long int* curr = head;
   long int* next = (long int*)head[1];
   while(next != NULL){
-    if((curr + curr[0] + 2) = next){ //If the location plus size of the node equals the location of the next node...
+    if((curr + curr[0] + 2) == next){ //If the location plus size of the node equals the location of the next node...
       curr[0] = curr[0] + 2 + next[0]; //Add the sizes together
       curr[1] = next[1]; //And set the pointer of the current node to the pointer of the next node
     }
