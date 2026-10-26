@@ -3,7 +3,7 @@
 freeList::freeList( long int*inRAM, int size ) {
   head = inRAM; //Location of node
   head[0] = size - 2; //Size of node minus the header
-  head[1] = NULL; //Pointer to next node
+  head[1] = nullptr; //Pointer to next node
 }
 
 long int*
@@ -12,7 +12,7 @@ freeList::reserve_space( int size ) {
   
   while(curr != NULL){ //While the current node still exists
     if(size - 2 > head[0]){ //If the current node is too small, go to the next node
-      curr = long int* curr[1];
+      curr = (long int*) curr[1];
     }else{
       head = curr + size; //Sets the head to the address at the end of the size of allocated node
       head[0] = curr[0] - size;
@@ -38,15 +38,15 @@ void
 freeList::coalesce_forward() {
   //Creates variables that keeps track of the current node and the next node
   long int* curr = head;
-  long int* next = head[1];
+  long int* next = (long int*)head[1];
   while(next != NULL){
-    if(((*curr + curr[0] + 2) = *next){ //If the location plus size of the node equals the location of the next node...
+    if((*curr + curr[0] + 2) = *next){ //If the location plus size of the node equals the location of the next node...
       curr[0] = curr[0] + 2 + next[0]; //Add the sizes together
       curr[1] = next[1]; //And set the pointer of the current node to the pointer of the next node
     }
     //Iterate to both of the next nodes in sequence for both variables
     curr = next;
-    next = long int* next[1];
+    next = (long int*) next[1];
   }
 }
 
